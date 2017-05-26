@@ -99,7 +99,7 @@ int main()
 	{
 		// Определяем длинну искомого слова
 		patternLength = 0;
-		while(pattern[patternLength] != 0 && pattern[patternLength] != '\n')
+		while(pattern[patternLength] != 0 && pattern[patternLength] != '\n' && pattern[patternLength] != '\r')
 		{
 			++patternLength;
 		}
