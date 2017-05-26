@@ -13,7 +13,7 @@ char* readFile(const char* _filename)
 	long length = ftell(input);
 	fseek (input, 0, SEEK_SET);
 	
-	ret = malloc(length);
+	ret = malloc(length + 1);
 	if(ret)
 	{
 		fread(ret, 1, length, input);
