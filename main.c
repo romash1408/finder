@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 
-// —читывает всЄ содержимое файла в строку. 0 при ошибке
+// Считывает всё содержимое файла в строку. 0 при ошибке
 char* readFile(const char* _filename)
 {
 	char *ret = 0;
@@ -23,7 +23,7 @@ char* readFile(const char* _filename)
 	return ret;
 }
 
-// —равнивает две строки до заданной длинны. 0 Ч не совпадают, 1 Ч совпадают
+// Сравнивает две строки до заданной длинны. 0 — не совпадают, 1 — совпадают
 const char eq(const char* _str1, const char* _str2, const int _length)
 {
 	int i;
@@ -34,7 +34,7 @@ const char eq(const char* _str1, const char* _str2, const int _length)
 	return 1;
 }
 
-// ѕроходит по строке _body, замен¤¤ все вхождени¤ _pattern на *
+// Проходит по строке _body, заменяя все вхождени¤ _pattern на *
 void replace(char* _body, const char* _pattern, const int _patternLength)
 {
 	int bodySum = 0, patternSum = 0, i;
@@ -45,8 +45,8 @@ void replace(char* _body, const char* _pattern, const int _patternLength)
 		patternSum += _pattern[i];
 	}
 	
-	// cursor указывает на место, откуда идЄт считывание, при нахождении очередного
-	// вхождени¤ курсор смещаетс¤ за него
+	// cursor указывает на место, откуда идёт считывание, при нахождении очередного
+	// вхождения курсор смещается за него
 	char *cursor = _body, rightAfterEnd = 0;
 	do
 	{
@@ -79,7 +79,7 @@ void replace(char* _body, const char* _pattern, const int _patternLength)
 
 int main()
 {
-	// »звлекаем исходный текст
+	// Извлекаем исходный текст
 	char *text = readFile("input.txt");
 	if(!text)
 	{
@@ -89,15 +89,15 @@ int main()
 	
 	//printf("%s:\n%s\n\n", "source", text);
 	
-	// ќткрываем словарь
+	// Открываем словарь
 	FILE *dict = fopen("dictionary.txt", "r");
 	char pattern[256];
 	int patternLength;
 	
-	//  аждое слово из словар¤ записываем в pattern
+	// Каждое слово из словар¤ записываем в pattern
 	while(fgets(pattern, 255, dict))
 	{
-		// ќпредел¤ем длинну искомого слова
+		// Определяем длинну искомого слова
 		patternLength = 0;
 		while(pattern[patternLength] != 0 && pattern[patternLength] != '\n')
 		{
@@ -105,7 +105,7 @@ int main()
 		}
 		pattern[patternLength] = 0;
 		
-		// ѕроизводим замену
+		// Производим замену
 		replace(text, pattern, patternLength);
 		
 	
