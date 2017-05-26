@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 
-// Считывает всё содержимое файла в строку. 0 при ошибке
+// вЂ”С‡РёС‚С‹РІР°РµС‚ РІСЃР„ СЃРѕРґРµСЂР¶РёРјРѕРµ С„Р°Р№Р»Р° РІ СЃС‚СЂРѕРєСѓ. 0 РїСЂРё РѕС€РёР±РєРµ
 char* readFile(const char* _filename)
 {
 	char *ret = 0;
@@ -23,7 +23,7 @@ char* readFile(const char* _filename)
 	return ret;
 }
 
-// Сравнивает две строки до заданной длинны. 0 — не совпадают, 1 — совпадают
+// вЂ”СЂР°РІРЅРёРІР°РµС‚ РґРІРµ СЃС‚СЂРѕРєРё РґРѕ Р·Р°РґР°РЅРЅРѕР№ РґР»РёРЅРЅС‹. 0 Р§ РЅРµ СЃРѕРІРїР°РґР°СЋС‚, 1 Р§ СЃРѕРІРїР°РґР°СЋС‚
 const char eq(const char* _str1, const char* _str2, const int _length)
 {
 	int i;
@@ -34,7 +34,7 @@ const char eq(const char* _str1, const char* _str2, const int _length)
 	return 1;
 }
 
-// Проходит по строке _body, заменяя все вхождения _pattern на *
+// С•СЂРѕС…РѕРґРёС‚ РїРѕ СЃС‚СЂРѕРєРµ _body, Р·Р°РјРµРЅВ¤В¤ РІСЃРµ РІС…РѕР¶РґРµРЅРёВ¤ _pattern РЅР° *
 void replace(char* _body, const char* _pattern, const int _patternLength)
 {
 	int bodySum = 0, patternSum = 0, i;
@@ -45,8 +45,8 @@ void replace(char* _body, const char* _pattern, const int _patternLength)
 		patternSum += _pattern[i];
 	}
 	
-	// cursor указывает на место, откуда идёт считывание, при нахождении очередного
-	// вхождения курсор смещается за него
+	// cursor СѓРєР°Р·С‹РІР°РµС‚ РЅР° РјРµСЃС‚Рѕ, РѕС‚РєСѓРґР° РёРґР„С‚ СЃС‡РёС‚С‹РІР°РЅРёРµ, РїСЂРё РЅР°С…РѕР¶РґРµРЅРёРё РѕС‡РµСЂРµРґРЅРѕРіРѕ
+	// РІС…РѕР¶РґРµРЅРёВ¤ РєСѓСЂСЃРѕСЂ СЃРјРµС‰Р°РµС‚СЃВ¤ Р·Р° РЅРµРіРѕ
 	char *cursor = _body, rightAfterEnd = 0;
 	do
 	{
@@ -79,7 +79,7 @@ void replace(char* _body, const char* _pattern, const int _patternLength)
 
 int main()
 {
-	// Извлекаем исходный текст
+	// В»Р·РІР»РµРєР°РµРј РёСЃС…РѕРґРЅС‹Р№ С‚РµРєСЃС‚
 	char *text = readFile("input.txt");
 	if(!text)
 	{
@@ -89,15 +89,15 @@ int main()
 	
 	//printf("%s:\n%s\n\n", "source", text);
 	
-	// Открываем словарь
+	// СњС‚РєСЂС‹РІР°РµРј СЃР»РѕРІР°СЂСЊ
 	FILE *dict = fopen("dictionary.txt", "r");
 	char pattern[256];
 	int patternLength;
 	
-	// Каждое слово из словаря записываем в pattern
+	// В Р°Р¶РґРѕРµ СЃР»РѕРІРѕ РёР· СЃР»РѕРІР°СЂВ¤ Р·Р°РїРёСЃС‹РІР°РµРј РІ pattern
 	while(fgets(pattern, 255, dict))
 	{
-		// Определяем длинну искомого слова
+		// СњРїСЂРµРґРµР»В¤РµРј РґР»РёРЅРЅСѓ РёСЃРєРѕРјРѕРіРѕ СЃР»РѕРІР°
 		patternLength = 0;
 		while(pattern[patternLength] != 0 && pattern[patternLength] != '\n')
 		{
@@ -105,7 +105,7 @@ int main()
 		}
 		pattern[patternLength] = 0;
 		
-		// Производим замену
+		// С•СЂРѕРёР·РІРѕРґРёРј Р·Р°РјРµРЅСѓ
 		replace(text, pattern, patternLength);
 		
 	
