@@ -1,4 +1,3 @@
 test-Romashka
 Test-*
-povest-Вымысел
-swoboda-Неволя
+povest-

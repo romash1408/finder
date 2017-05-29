@@ -162,7 +162,8 @@ int main()
 		// Переносим указатель на новый текст на его место и подчищаем за собой
 		free(text);
 		text = rewritten;
-		textLength += posCount * (changeLength - patternLength);
+		textLength += posCount * changeLength;
+		textLength -= posCount * patternLength;
 		rewritten = 0;
 		pstFree(pos);
 	}
